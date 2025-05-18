@@ -9,12 +9,17 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class MyNotesExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(AuthorNotFoundException.class)
-    public ResponseEntity<Object> handleAuthorNotFoundException(AuthorNotFoundException ex) {
+    public ResponseEntity<String> handleAuthorNotFoundException(AuthorNotFoundException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(RequiredFieldWereNotFilledException.class)
-    public ResponseEntity<Object> handleRequiredFieldWereNotFilledException(RequiredFieldWereNotFilledException ex) {
+    public ResponseEntity<String> handleRequiredFieldWereNotFilledException(RequiredFieldWereNotFilledException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(NoteNotFoundException.class)
+    public ResponseEntity<String> handleNoteNotFoundException(NoteNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 }

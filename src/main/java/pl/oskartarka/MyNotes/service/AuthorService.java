@@ -3,8 +3,7 @@ package pl.oskartarka.MyNotes.service;
 import org.springframework.stereotype.Service;
 import pl.oskartarka.MyNotes.exceptions.AuthorNotFoundException;
 import pl.oskartarka.MyNotes.exceptions.RequiredFieldWereNotFilledException;
-import pl.oskartarka.MyNotes.model.entity.Author;
-import pl.oskartarka.MyNotes.model.request.AuthorRequest;
+import pl.oskartarka.MyNotes.model.Author;
 import pl.oskartarka.MyNotes.repository.AuthorRepository;
 
 import java.util.List;
@@ -17,14 +16,12 @@ public class AuthorService {
         this.authorRepository = authorRepository;
     }
 
-    public void createAuthor(AuthorRequest author) {
+    public void createAuthor(Author author) {
         if (author.getName() == null || author.getName().isEmpty()) {
             throw new RequiredFieldWereNotFilledException("Author name was empty or null");
         }
-        Author newAuthor = new Author();
-        newAuthor.setName(author.getName());
 
-        authorRepository.save(newAuthor);
+        authorRepository.save(author);
     }
 
     public List<Author> getAllAuthors() {
