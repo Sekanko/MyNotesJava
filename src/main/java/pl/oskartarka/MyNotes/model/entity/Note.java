@@ -1,4 +1,4 @@
-package pl.oskartarka.MyNotes.model;
+package pl.oskartarka.MyNotes.model.entity;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
